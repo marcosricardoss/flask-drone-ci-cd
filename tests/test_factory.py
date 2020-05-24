@@ -6,4 +6,4 @@ def test_config():
 
 def test_hello(client):
     response = client.get('/')
-    assert response.data == b'Hello, Heroku'
+    assert response.data == b'Hello, Drone'
