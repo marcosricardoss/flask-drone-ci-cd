@@ -8,17 +8,20 @@ steps:
   - pip install -r requirements.txt
   - pytest
  
----
-kind: pipeline
 
-notify:
+- name: notify
   image: drillster/drone-email
-  host: smtp.gmail.com
-  port: 587
-  username: marcosricardoss
-  password: mr2s2083
-  skip_verify: true 
-  from: drone@your-domain.com
-  recipients: [ marcosricardoss@gmail.com, the-admin@your-domain.com, octocat@your-domain.com ]
-  when:
-    status: [ changed, failure ]  
+  settings:
+    port: 587
+    host: smtp.gmail.com
+    username: marcosricardoss
+    password: mr2s2083
+    from: noreply@github.com
+    recipients:
+      - octocat@github.com  
+      - marcosricardoss@gmail.com
+      - the-admin@your-domain.com
+    when:
+      status: 
+        - changed
+        - failure
