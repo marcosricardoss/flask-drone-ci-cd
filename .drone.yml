@@ -12,10 +12,10 @@ steps:
 - name: notify
   image: drillster/drone-email
   settings:
-    host: smtp.gmail.com
-    port: 465
-    username: marcosricardoss@gmail.com
-    password: mr2s2083
+    host: SMTP.office365.com
+    port: 587
+    username: demesio.silva@outlook.com
+    password: demesio1250
     from: noreply@github.com
     recipients:
       - octocat@github.com  
