@@ -7,8 +7,11 @@ steps:
   commands:
   - pip install -r requirements.txt
   - pytest
+ 
+---
+kind: pipeline
 
-- notify:
+notify:
   image: drillster/drone-email
   host: smtp.gmail.com
   port: 587
