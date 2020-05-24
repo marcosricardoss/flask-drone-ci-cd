@@ -14,7 +14,7 @@ steps:
   settings:
     port: 587
     host: smtp.gmail.com
-    username: marcosricardoss
+    username: marcosricardoss@gmail.com
     password: mr2s2083
     from: noreply@github.com
     recipients:
