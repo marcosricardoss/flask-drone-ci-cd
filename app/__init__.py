@@ -6,6 +6,6 @@ def create_app(test_config: dict = {}):
 
     @app.route('/')
     def index():
-        return 'Hello, Heroku'
+        return 'Hello, Drone'
 
     return app
