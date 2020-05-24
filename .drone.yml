@@ -12,8 +12,8 @@ steps:
 - name: notify
   image: drillster/drone-email
   settings:
-    port: 587
     host: smtp.gmail.com
+    port: 465
     username: marcosricardoss@gmail.com
     password: mr2s2083
     from: noreply@github.com
