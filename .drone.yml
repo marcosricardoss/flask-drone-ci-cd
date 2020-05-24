@@ -7,3 +7,13 @@ steps:
   commands:
   - pip install -r requirements.txt
   - pytest
+
+notify:
+  image: drillster/drone-email
+  host: smtp.some-server.com
+  username: foo
+  password: bar
+  from: drone@your-domain.com
+  recipients: [ the-admin@your-domain.com, octocat@your-domain.com ]
+  when:
+    status: [ changed, failure ]  
