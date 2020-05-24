@@ -11,7 +11,7 @@ steps:
 - name: notify
   image: plugins/slack
   settings:
-    webhook: https://hooks.slack.com/services/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
+    webhook: https://hooks.slack.com/services/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
     channel: dev
     username: drone
     template: >
