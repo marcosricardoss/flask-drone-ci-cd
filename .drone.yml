@@ -6,22 +6,17 @@ steps:
   image: python
   commands:
   - pip install -r requirements.txt
-  - pytest
- 
+  - pytest 
 
 - name: notify
-  image: drillster/drone-email
+  image: plugins/slack
   settings:
-    host: smtp.office365.com
-    port: 587
-    username: demesio.silva@outlook.com
-    password: demesio1250
-    from: noreply@github.com
-    recipients:
-      - octocat@github.com  
-      - marcosricardoss@gmail.com
-      - the-admin@your-domain.com
-    when:
-      status: 
-        - changed
-        - failure
+    webhook: https://hooks.slack.com/services/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
+    channel: dev
+    username: drone
+    template: >
+      {{#success build.status}}
+        build {{build.number}} succeeded. :-)
+      {{else}}
+        build {{build.number}} failed. :-(
+      {{/success}}
