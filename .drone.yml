@@ -12,8 +12,8 @@ steps:
   image: plugins/slack
   settings:
     webhook: https://hooks.slack.com/services/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
-    channel: dev
-    username: drone
+    # channel: dev
+    # username: drone
     template: >
       {{#success build.status}}
         build {{build.number}} succeeded. :-)
