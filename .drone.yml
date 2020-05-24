@@ -13,7 +13,6 @@ steps:
   settings:
     webhook: https://hooks.slack.com/services/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
     channel: dev
-    username: drone
     template: >
       {{#success build.status}}
         build {{build.number}} succeeded. :-)
