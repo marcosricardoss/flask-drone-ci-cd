@@ -10,9 +10,11 @@ steps:
 
 notify:
   image: drillster/drone-email
-  host: smtp.some-server.com
-  username: foo
-  password: bar
+  host: smtp.gmail.com
+  port: 587
+  username: marcosricardoss
+  password: mr2s2083
+  skip_verify: true 
   from: drone@your-domain.com
   recipients: [ the-admin@your-domain.com, octocat@your-domain.com ]
   when:
