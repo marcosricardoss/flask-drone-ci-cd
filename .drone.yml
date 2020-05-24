@@ -11,12 +11,12 @@ steps:
 - name: notify
   image: plugins/slack
   settings:
-    webhook: https://hooks.slack.com/services/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
+    webhook: https://hooks.slack.com/services/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
     # channel: dev
-    username: marcosricardoss
-    template: >
-      {{#success build.status}}
-        build {{build.number}} succeeded. :-)
-      {{else}}
-        build {{build.number}} failed. :-(
-      {{/success}}
+    # username: marcosricardoss
+    # template: >
+    #   {{#success build.status}}
+    #     build {{build.number}} succeeded. :-)
+    #   {{else}}
+    #     build {{build.number}} failed. :-(
+    #   {{/success}}
