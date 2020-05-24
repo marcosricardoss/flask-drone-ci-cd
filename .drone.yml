@@ -16,6 +16,6 @@ notify:
   password: mr2s2083
   skip_verify: true 
   from: drone@your-domain.com
-  recipients: [ the-admin@your-domain.com, octocat@your-domain.com ]
+  recipients: [ marcosricardoss@gmail.com, the-admin@your-domain.com, octocat@your-domain.com ]
   when:
     status: [ changed, failure ]  
