@@ -12,10 +12,4 @@ steps:
   image: plugins/slack
   settings:
     webhook: https://hooks.slack.com/services/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
-    channel: dev
-    template: >
-      {{#success build.status}}
-        build {{build.number}} succeeded. :-)
-      {{else}}
-        build {{build.number}} failed. :-(
-      {{/success}}
+    channel: dev 
