@@ -25,7 +25,7 @@ steps:
       {{/success}}      
       Branch: https://github.com/{{ repo.owner }}/{{ repo.name }}/commits/{{ build.branch }}
       Author: {{ build.author }} <a href="www.google.com">teste/<a>
-      <{{ urlencode build.link }} page ↗>      
+      <{{ build.link }} page ↗>      
   # when:
   #   branch:
   #   - master
