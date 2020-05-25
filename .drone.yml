@@ -22,7 +22,6 @@ steps:
       {{else}}
         :warning: build {{build.number}} failed. Fix me please. (type: `{{ build.event }}`)
       {{/success}}            
-      branch: {{ build.branch }}
       build page: {{ build.link }}
   # when:
   #   branch:
@@ -52,21 +51,3 @@ steps:
   # when:
   #   branch:
   #   - master
-
-- name: notify slack app
-  image: plugins/slack-blame
-  settings:
-    token:
-      from_secret: slack-app-token
-    channel: dev
-    success_template: |
-      The build is fixed! Thanks @{{slack.name}}
-    success_image_attachments:
-      - "http://i.imgur.com/TP4PIxc.jpg"
-    failure_template: |
-      The build is broken! Blame {{slack.name}}
-    failure_image_attachments:
-      - "http://cdn.meme.am/instances/51000361.jpg"    
-  when:
-    branch:
-    - master
