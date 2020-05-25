@@ -10,7 +10,6 @@ steps:
   when:
     branch:
     - master
-    - dev
 
 - name: notify
   image: appleboy/drone-discord
@@ -29,4 +28,3 @@ steps:
   when:
     branch:
     - master
-    - dev      
