@@ -19,10 +19,10 @@ steps:
     message: >
       {{#success build.status}}
         build {{build.number}} succeeded. Good job.
+        Commit: {{build.commit}}
       {{else}}
         build {{build.number}} failed. Fix me please.
       {{/success}}      
-      Commit: {{build.commit}}
       Branch: <https://github.com/{{ repo.owner }}/{{ repo.name }}/commits/{{ build.branch }}|{{ build.branch }}>
       Author: {{ build.author }}      
       <{{ build.link }}|Visit build page ↗>      
