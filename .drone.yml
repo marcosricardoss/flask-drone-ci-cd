@@ -9,15 +9,13 @@ steps:
   - pytest 
 
 - name: notify
-  image: plugins/slack-blame
+  image: appleboy/drone-discord
   settings:
-    token: xoxb-1142836503955-1142799032674-CwpdAipl65o12vC0vYv3kSMA
-    channel: dev
-    success_template: |
-      The build is fixed! Thanks @{{slack.name}}
-    success_image_attachments:
-      - "http://i.imgur.com/TP4PIxc.jpg"
-    failure_template: |
-      The build is broken! Blame {{slack.name}}
-    failure_image_attachments:
-      - "http://cdn.meme.am/instances/51000361.jpg"
+  webhook_id: 714270759157235764/FZDb6JmQ22QVfFtg4A01HDZLdt
+  webhook_token: 7sYfSGehJBVSB7JPGCjVnbVaZM8FfK9G3o7S4FmJf
+    message: >
+      {{#success build.status}}
+        build {{build.number}} succeeded. Good job.
+      {{else}}
+        build {{build.number}} failed. Fix me please.
+      {{/success}}
