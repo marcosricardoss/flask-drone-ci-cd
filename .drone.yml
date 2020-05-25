@@ -23,9 +23,9 @@ steps:
       {{else}}
         build {{build.number}} failed. Fix me please.
       {{/success}}      
-      Branch: https://github.com/{{ repo.owner }}/{{ repo.name }}/commits/{{ build.branch }}
-      Author: {{ build.author }} <a href="www.google.com">teste/<a>
-      <{{ build.link }} page ↗>      
+      Branch: <https://github.com/{{ repo.owner }}/{{ repo.name }}/commits/{{ build.branch }}|{{ build.branch }}>
+      Author: {{ build.author }}      
+      Visit build page: {{ build.link }}
   # when:
   #   branch:
   #   - master
