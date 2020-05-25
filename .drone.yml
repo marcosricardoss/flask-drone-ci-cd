@@ -13,7 +13,7 @@ steps:
   settings:
     webhook_id: 714270759157235764
     webhook_token: FZDb6JmQ22QVfFtg4A01HDZLdt-7sYfSGehJBVSB7JPGCjVnbVaZM8FfK9G3o7S4FmJf
-    username: $DOCKER_HOST
+    username: ${DOCKER_HOST}
     message: >
       {{#success build.status}}
         build {{build.number}} succeeded. Good job.
