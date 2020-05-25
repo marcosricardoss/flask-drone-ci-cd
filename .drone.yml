@@ -11,6 +11,6 @@ steps:
 - name: notify
   image: appleboy/drone-discord
   settings:
-    webhook_id: 714270759157235764/FZDb6JmQ22QVfFtg4A01HDZLdtA
-    webhook_token: 7sYfSGehJBVSB7JPGCjVnbVaZM8FfK9G3o7S4FmJfA
+    webhook_id: 714270759157235764
+    webhook_token: FZDb6JmQ22QVfFtg4A01HDZLdt-7sYfSGehJBVSB7JPGCjVnbVaZM8FfK9G3o7S4FmJf
     message: "Testing from drone image"
