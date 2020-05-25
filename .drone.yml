@@ -22,6 +22,7 @@ steps:
       {{else}}
         :warning: build {{build.number}} failed. Fix me please. (type: `{{ build.event }}`)
       {{/success}}            
+      branch: {{ build.branch }}
       build page: {{ build.link }}
   # when:
   #   branch:
