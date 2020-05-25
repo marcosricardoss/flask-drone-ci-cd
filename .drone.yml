@@ -18,9 +18,9 @@ steps:
     username: drone.io
     message: >
       {{#success build.status}}
-        :thumbsup: build {{build.number}} succeeded. Good job.
+        :thumbsup: build {{build.number}} succeeded. Good job. (type: `{{ build.event }}`)
       {{else}}
-        :thumbsdown: build {{build.number}} failed. Fix me please.
+        :thumbsdown: build {{build.number}} failed. Fix me please. (type: `{{ build.event }}`)
       {{/success}}            
       build page: {{ build.link }}
   # when:
