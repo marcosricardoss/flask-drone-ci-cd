@@ -19,6 +19,7 @@ steps:
     message: >
       {{#success build.status}}
         :thumbsup: build {{build.number}} succeeded. Good job. (type: `{{ build.event }}`)
+        pull request page: https://github.com/{{ repo.owner }}/{{ repo.name }}/pulls
       {{else}}
         :thumbsdown: build {{build.number}} failed. Fix me please. (type: `{{ build.event }}`)
       {{/success}}            
