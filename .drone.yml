@@ -26,10 +26,11 @@ steps:
 #     branch:
 #     - master
 
-- name: notify
+- name: slack
   image: plugins/slack
   settings:
-    webhook: from_secret: slack_webhook_url
+    webhook: 
+      from_secret: slack_webhook_url
     username: drone
     channel: dev
     template: >
