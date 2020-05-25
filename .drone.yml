@@ -23,7 +23,7 @@ steps:
         *{{#success build.status}}✔{{ else }}✘{{/success}} {{ uppercasefirst build.status }}: Build #{{ build.number }}* (type: `{{ build.event }}`)
       {{/if}}
 
-      Commit: urlencode(https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }})
+      Commit: {{ urlencode https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }} }}
 
       Branch: <https://github.com/{{ repo.owner }}/{{ repo.name }}/commits/{{ build.branch }}|{{ build.branch }}>
 
