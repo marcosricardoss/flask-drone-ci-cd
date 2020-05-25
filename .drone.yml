@@ -17,11 +17,19 @@ steps:
       from_secret: discord_webhook_token
     username: drone.io
     message: >
-      {{#success build.status}}
-        build {{build.number}} succeeded. Good job.
+      {{#if build.pull }}
+        *{{#success build.status}}✔{{ else }}✘{{/success}} {{ uppercasefirst build.status }}*: <https://github.com/{{ repo.owner }}/{{ repo.name }}/pull/{{ build.pull }}|Pull Request #{{ build.pull }}>
       {{else}}
-        build {{build.number}} failed. Fix me please.
-      {{/success}}
+        *{{#success build.status}}✔{{ else }}✘{{/success}} {{ uppercasefirst build.status }}: Build #{{ build.number }}* (type: `{{ build.event }}`)
+      {{/if}}
+
+      Commit: <https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}|{{ truncate build.commit 8 }}>
+
+      Branch: <https://github.com/{{ repo.owner }}/{{ repo.name }}/commits/{{ build.branch }}|{{ build.branch }}>
+
+      Author: {{ build.author }}
+      
+      <{{ build.link }}|Visit build page ↗>
   when:
     branch:
     - master
@@ -45,7 +53,7 @@ steps:
       Branch: <https://github.com/{{ repo.owner }}/{{ repo.name }}/commits/{{ build.branch }}|{{ build.branch }}>
 
       Author: {{ build.author }}
-      
+
       <{{ build.link }}|Visit build page ↗>
   when:
     branch:
