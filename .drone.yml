@@ -17,7 +17,7 @@ steps:
       from_secret: discord_webhook_token
     username: drone.io
     message: >
-      {{#pull_request build.event}}
+      {{#if build.event}}
         *{{#success build.status}}✔{{ else }}✘{{/success}} {{ uppercasefirst build.status }}*: <https://github.com/{{ repo.owner }}/{{ repo.name }}/pull/{{ build.pull }}|Pull Request #{{ build.pull }}>
       {{else}}
         *{{#success build.status}}✔{{ else }}✘{{/success}} {{ uppercasefirst build.status }}: Build #{{ build.number }}* (type: `{{ build.event }}`)
@@ -29,11 +29,10 @@ steps:
 
       Author: {{ build.author }}
       
-      <{{ build.link }}|Visit build page ↗>
-      
-  when:
-    branch:
-    - master
+      <{{ build.link }}|Visit build page ↗>      
+  # when:
+  #   branch:
+  #   - master
 
 - name: notify slack
   image: plugins/slack
@@ -56,9 +55,9 @@ steps:
       Author: {{ build.author }}
       
       <{{ build.link }}|Visit build page ↗>
-  when:
-    branch:
-    - master
+  # when:
+  #   branch:
+  #   - master
 
 - name: notify slack app
   image: plugins/slack-blame
