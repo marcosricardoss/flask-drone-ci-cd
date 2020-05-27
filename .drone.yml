@@ -1,3 +1,4 @@
+Z
 kind: pipeline
 type: exec
 name: default
@@ -9,9 +10,7 @@ platform:
 steps:
 - name: greeting
   commands:
-  - apt install curl  
   - echo hello world
   - echo deploy.txt  
-  - curl -X POST --data-urlencode "payload={\"channel\": \"#dev\", \"username\": \"$HOSTNAME\", \"text\": \"Deploy process completed.\"}" from_secret: slack_webhook_url
   depends_on:
     - default
