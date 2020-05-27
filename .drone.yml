@@ -62,20 +62,20 @@ steps:
   #   branch:
   #   - master
 
-  ---
-  kind: pipeline
-  type: exec
-  name: deploy
+---
+kind: pipeline
+type: exec
+name: deploy
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: greeting
+  commands:
+  - echo hello world
+  - echo deploy.txt
   
-  platform:
-    os: linux
-    arch: amd64
-  
-  steps:
-  - name: greeting
-    commands:
-    - echo hello world
-    - echo deploy.txt
-    
-    depends_on:
-      - default
+  depends_on:
+    - default
