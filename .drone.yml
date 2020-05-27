@@ -61,21 +61,21 @@ steps:
   #   branch:
   #   - master
 
----
-kind: pipeline
-type: exec
-name: deploy
+# ---
+# kind: pipeline
+# type: exec
+# name: deploy
 
-platform:
-  os: linux
-  arch: amd64
+# platform:
+#   os: linux
+#   arch: amd64
 
-steps:
-- name: greeting
-  commands:  
-  - echo hello world
-  # - echo deploy.txt 
-  # - apt install curl   
-  # - curl -X POST --data-urlencode "payload={\"channel\": \"#dev\", \"username\": \"$HOSTNAME\", \"text\": \"Deploy process completed.\"}" https://hooks.slack.com/services/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
-  depends_on:
-    - default 
+# steps:
+# - name: greeting
+#   commands:  
+#   - echo hello world
+#   - echo deploy.txt 
+#   - apt install curl   
+#   - curl -X POST --data-urlencode "payload={\"channel\": \"#dev\", \"username\": \"$HOSTNAME\", \"text\": \"Deploy process completed.\"}" https://hooks.slack.com/services/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
+#   depends_on:
+#     - default 
