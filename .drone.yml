@@ -74,9 +74,9 @@ platform:
 steps:
 - name: greeting
   commands:
-  - sudo apt install curl  
+  - apt install curl  
   - echo hello world
   - echo deploy.txt  
-  - curl -X POST --data-urlencode "payload={\"channel\": \"#dev\", \"username\": \"$HOSTNAME\", \"text\": \"Deploy process completed.\"}" https://hooks.slack.com/services/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
+  # - curl -X POST --data-urlencode "payload={\"channel\": \"#dev\", \"username\": \"$HOSTNAME\", \"text\": \"Deploy process completed.\"}" https://hooks.slack.com/services/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
   depends_on:
     - default
