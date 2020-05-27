@@ -1,13 +1,13 @@
-kind: pipeline
-type: docker
-name: default
+# kind: pipeline
+# type: docker
+# name: default
 
-steps:
-- name: test
-  image: python
-  commands:
-  - pip install -r requirements.txt
-  - pytest 
+# steps:
+# - name: test
+#   image: python
+#   commands:
+#   - pip install -r requirements.txt
+#   - pytest 
 
 # - name: docker  
 #   image: plugins/docker
@@ -36,28 +36,28 @@ steps:
 #     branch:
 #     - master
 
-  # https://hooks.slack.com/services/...
-- name: notify slack
-  image: plugins/slack
-  settings:
-    webhook: 
-      from_secret: slack_webhook_url
-    username: drone
-    channel: dev
-    template: >
-      {{#if build.pull }}
-        *{{#success build.status}}✔{{ else }}✘{{/success}} {{ uppercasefirst build.status }}*: <https://github.com/{{ repo.owner }}/{{ repo.name }}/pull/{{ build.pull }}|Pull Request #{{ build.pull }}>
-      {{else}}
-        *{{#success build.status}}✔{{ else }}✘{{/success}} {{ uppercasefirst build.status }}: Build #{{ build.number }}* (type: `{{ build.event }}`)
-      {{/if}}
+#   # https://hooks.slack.com/services/...
+# - name: notify slack
+#   image: plugins/slack
+#   settings:
+#     webhook: 
+#       from_secret: slack_webhook_url
+#     username: drone
+#     channel: dev
+#     template: >
+#       {{#if build.pull }}
+#         *{{#success build.status}}✔{{ else }}✘{{/success}} {{ uppercasefirst build.status }}*: <https://github.com/{{ repo.owner }}/{{ repo.name }}/pull/{{ build.pull }}|Pull Request #{{ build.pull }}>
+#       {{else}}
+#         *{{#success build.status}}✔{{ else }}✘{{/success}} {{ uppercasefirst build.status }}: Build #{{ build.number }}* (type: `{{ build.event }}`)
+#       {{/if}}
 
-      Commit: <https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}|{{ truncate build.commit 8 }}>
+#       Commit: <https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}|{{ truncate build.commit 8 }}>
 
-      Branch: <https://github.com/{{ repo.owner }}/{{ repo.name }}/commits/{{ build.branch }}|{{ build.branch }}>
+#       Branch: <https://github.com/{{ repo.owner }}/{{ repo.name }}/commits/{{ build.branch }}|{{ build.branch }}>
 
-      Author: {{ build.author }}
+#       Author: {{ build.author }}
       
-      <{{ build.link }}|Visit build page ↗>
+#       <{{ build.link }}|Visit build page ↗>
   # when:
   #   branch:
   #   - master
@@ -65,7 +65,7 @@ steps:
 ---
 kind: pipeline
 type: exec
-name: deploy
+name: default
 
 platform:
   os: linux
@@ -77,6 +77,6 @@ steps:
   - apt install curl  
   - echo hello world
   - echo deploy.txt  
-  # - curl -X POST --data-urlencode "payload={\"channel\": \"#dev\", \"username\": \"$HOSTNAME\", \"text\": \"Deploy process completed.\"}" https://hooks.slack.com/services/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
+  - curl -X POST --data-urlencode "payload={\"channel\": \"#dev\", \"username\": \"$HOSTNAME\", \"text\": \"Deploy process completed.\"}" from_secret: slack_webhook_url
   depends_on:
     - default
