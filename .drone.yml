@@ -5,10 +5,9 @@ name: default
 
 platform:
   os: linux
-  arch: x86_64
+  arch: amd64
 
 steps:
-- name: deploy
+- name: greeting
   commands:
   - echo hello world
-  - echo deploy.txt  
