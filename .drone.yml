@@ -1,3 +1,4 @@
+---
 kind: pipeline
 type: exec
 name: default
@@ -7,9 +8,7 @@ platform:
   arch: amd64
 
 steps:
-- name: greeting
+- name: deploy
   commands:
   - echo hello world
   - echo deploy.txt  
-  depends_on:
-    - default
