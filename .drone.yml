@@ -27,6 +27,11 @@ steps:
     branch:
     - master
 
+node:
+  foo: bar
+  keyA: valueA
+  keyB: valueB
+
 depends_on:
 - test
 

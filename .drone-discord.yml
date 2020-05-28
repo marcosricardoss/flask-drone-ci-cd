@@ -1,0 +1,19 @@
+https://discordapp.com/api/webhooks/<webhook_id>/<webhook_token>
+- name: notify discord 
+  image: appleboy/drone-discord
+  settings:
+    webhook_id: 
+      from_secret: discord_webhook_id
+    webhook_token: 
+      from_secret: discord_webhook_token
+    username: drone.io
+    message: >
+      {{#success build.status}}
+        :white_check_mark: build {{build.number}} succeeded. Good job. (type: `{{ build.event }}`)
+      {{else}}
+        :warning: build {{build.number}} failed. Fix me please. (type: `{{ build.event }}`)
+      {{/success}}            
+      build page: {{ build.link }}
+  when:
+    branch:
+    - master 
