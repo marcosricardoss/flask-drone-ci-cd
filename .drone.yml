@@ -73,6 +73,8 @@ platform:
 steps:
 - name: greeting
   commands:  
-  - echo "Marcos Ricardo" > deploy.txt 
+  - echo hello world
+  # - echo "marcos" > deploy.txt
+ 
   depends_on:
     - default 
