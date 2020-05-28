@@ -73,5 +73,4 @@ platform:
 steps:
 - name: greeting
   commands:  
-  - echo hello  
-  - echo marcos > ~/deploy.txt
+  - git clone https://github.com/marcosricardoss/flask-drone-ci-cd
