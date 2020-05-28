@@ -1,6 +1,7 @@
 version: '3.2'
 services:
   app:
+    container_name: flaskapp
     build:
       context: .
     environment:
