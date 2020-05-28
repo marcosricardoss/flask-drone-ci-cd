@@ -6,7 +6,7 @@ services:
       context: .
     environment:
         FLASK_APP: app        
-    command: python3 -m flask run --host=0.0.0.0 --port=4000
+    command: waitress-serve --port=4000 --call 'app:create_app'
     volumes:
       - './:/usr/src/app'
     ports:
