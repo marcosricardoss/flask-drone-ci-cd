@@ -73,6 +73,6 @@ platform:
 steps:
 - name: greeting
   commands:  
-  - ls
+  - hostname
   - docker-compose down --remove-orphans
   - docker-compose up -d
