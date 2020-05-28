@@ -73,7 +73,7 @@ platform:
 steps:
 - name: greeting
   commands:  
-  - ls
+  # - ls
   - pwd
   - hostname
   - echo $HOME
