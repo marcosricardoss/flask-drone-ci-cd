@@ -32,8 +32,8 @@ depends_on:
 
 ---
 kind: pipeline
-name: after
 type: docker
+name: after
 
 steps:
   - name: notify slack
