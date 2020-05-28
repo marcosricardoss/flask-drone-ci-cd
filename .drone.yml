@@ -21,9 +21,7 @@ platform:
 steps:
 - name: docker-composer
   commands:   
-  - cp -R * /home/marcos/test
-  - ls /home/marcos/test
-  - cd /home/marcos/test
+  - pwd
   - docker-compose down --remove-orphans
   - docker-compose up --build
   when:
