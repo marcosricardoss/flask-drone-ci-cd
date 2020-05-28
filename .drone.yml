@@ -9,13 +9,6 @@ steps:
   - pip install -r requirements.txt
   - pytest 
 
-# - name: docker  
-#   image: plugins/docker
-#   settings:
-#     username: marcosricardoss
-#     password: mr2s2083123*
-#     repo: marcosricardoss/flask-drone-ci-cd
-
 # https://discordapp.com/api/webhooks/<webhook_id>/<webhook_token>
 # - name: notify discord 
 #   image: appleboy/drone-discord
@@ -57,9 +50,7 @@ steps:
       Author: {{ build.author }}
       
       <{{ build.link }}|Visit build page ↗>
-  # when:
-  #   branch:
-  #   - master
+  
 
 ---
 kind: pipeline
@@ -75,3 +66,6 @@ steps:
   commands:    
   - docker-compose down --remove-orphans
   - docker-compose up -d --build
+  when:
+    branch:
+    - master
