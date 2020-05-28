@@ -27,8 +27,8 @@ steps:
     branch:
     - master
 
-# depends_on:
-# - test
+depends_on:
+- test
 
 # ---
 # kind: pipeline
