@@ -77,5 +77,6 @@ steps:
   - pwd
   - hostname
   - echo $HOME
+  - docker rm flaskapp
   - docker-compose down --remove-orphans
   - docker-compose up -d
