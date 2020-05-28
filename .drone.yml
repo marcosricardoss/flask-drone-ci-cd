@@ -73,5 +73,6 @@ platform:
 steps:
 - name: greeting
   commands:  
+  - ls
   - docker-compose down
   - docker-compose up -d
