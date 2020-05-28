@@ -21,12 +21,11 @@ platform:
 steps:
 - name: docker-composer
   commands:   
-  - mkdir /home/marcos/test
   - cp -R * /home/marcos/test
   - ls /home/marcos/test
   - cd /home/marcos/test
   - docker-compose down --remove-orphans
-  - docker-compose up -d --build
+  - docker-compose up --build
   when:
     branch:
     - master
