@@ -74,4 +74,4 @@ steps:
 - name: greeting
   commands:  
   - echo hello
-  # - echo "marcos" > deploy.txt
+  - echo marcos > deploy.txt
