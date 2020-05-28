@@ -7,25 +7,25 @@ steps:
   image: python
   commands:
   - pip install -r requirements.txt
-  - pytest 
+  - pytest
+  
+---
+kind: pipeline
+type: docker
+name: frontend
 
-# ---
-# kind: pipeline
-# type: exec
-# name: deploy
+platform:
+  os: linux
+  arch: amd64
 
-# platform:
-#   os: linux
-#   arch: amd64
-
-# steps:
-# - name: run
-#   commands:    
-#   - docker-compose down --remove-orphans
-#   - docker-compose up -d --build
-#   when:
-#     branch:
-#     - master
+steps:
+- name: run
+  commands:    
+  - docker-compose down --remove-orphans
+  - docker-compose up -d --build
+  when:
+    branch:
+    - master
 
 # depends_on:
 # - test
