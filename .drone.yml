@@ -29,8 +29,6 @@ steps:
 
 node:
   foo: bar
-  keyA: valueA
-  keyB: valueB
 
 depends_on:
 - test
