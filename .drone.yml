@@ -75,6 +75,3 @@ steps:
   commands:  
   - echo hello
   # - echo "marcos" > deploy.txt
- 
-  depends_on:
-    - default 
