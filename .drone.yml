@@ -1,4 +1,68 @@
 kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: test
+  image: python
+  commands:
+  - pip install -r requirements.txt
+  - pytest 
+
+# - name: docker  
+#   image: plugins/docker
+#   settings:
+#     username: marcosricardoss
+#     password: mr2s2083123*
+#     repo: marcosricardoss/flask-drone-ci-cd
+
+# https://discordapp.com/api/webhooks/<webhook_id>/<webhook_token>
+# - name: notify discord 
+#   image: appleboy/drone-discord
+#   settings:
+#     webhook_id: 
+#       from_secret: discord_webhook_id
+#     webhook_token: 
+#       from_secret: discord_webhook_token
+#     username: drone.io
+#     message: >
+#       {{#success build.status}}
+#         :white_check_mark: build {{build.number}} succeeded. Good job. (type: `{{ build.event }}`)
+#       {{else}}
+#         :warning: build {{build.number}} failed. Fix me please. (type: `{{ build.event }}`)
+#       {{/success}}            
+#       build page: {{ build.link }}
+#   when:
+#     branch:
+#     - master
+
+- name: notify slack
+  image: plugins/slack
+  settings:
+    webhook: 
+      from_secret: slack_webhook_url
+    username: drone
+    channel: dev
+    template: >
+      {{#if build.pull }}
+        *{{#success build.status}}✔{{ else }}✘{{/success}} {{ uppercasefirst build.status }}*: <https://github.com/{{ repo.owner }}/{{ repo.name }}/pull/{{ build.pull }}|Pull Request #{{ build.pull }}>
+      {{else}}
+        *{{#success build.status}}✔{{ else }}✘{{/success}} {{ uppercasefirst build.status }}: Build #{{ build.number }}* (type: `{{ build.event }}`)
+      {{/if}}
+
+      Commit: <https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}|{{ truncate build.commit 8 }}>
+
+      Branch: <https://github.com/{{ repo.owner }}/{{ repo.name }}/commits/{{ build.branch }}|{{ build.branch }}>
+
+      Author: {{ build.author }}
+      
+      <{{ build.link }}|Visit build page ↗>
+  # when:
+  #   branch:
+  #   - master
+
+---
+kind: pipeline
 type: exec
 name: deploy
 
