@@ -72,11 +72,6 @@ platform:
 
 steps:
 - name: greeting
-  commands:  
-  # - ls
-  - pwd
-  - hostname
-  - echo $HOME
+  commands:    
   - docker-compose down --remove-orphans
-  - docker-compose build
-  - docker-compose up -d
+  - docker-compose up -d --build
