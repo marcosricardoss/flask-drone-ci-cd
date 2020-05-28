@@ -73,8 +73,5 @@ platform:
 steps:
 - name: greeting
   commands:  
-  - git clone https://github.com/marcosricardoss/flask-drone-ci-cd
-  # - cd flask-drone-ci-cd
   - docker-compose down
   - docker-compose up -d
-  - ls
