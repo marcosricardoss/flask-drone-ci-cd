@@ -11,19 +11,19 @@ services:
     ports:
       - '4000:4000'
       
-  webhookrelay:
-    container_name: webhookrelay
-    image: webhookrelay/webhookrelayd:latest
-    network_mode: host
-    command:
-      - --mode 
-      - tunnel 
-      - --region 
-      - us-west
-    restart: always
-    depends_on:
-      - app
-    environment: 
-      - RELAY_KEY=${RELAY_KEY}
-      - RELAY_SECRET=${RELAY_SECRET}
-      - TUNNELS=${TUNNELS} 
+  # webhookrelay:
+  #   container_name: webhookrelay
+  #   image: webhookrelay/webhookrelayd:latest
+  #   network_mode: host
+  #   command:
+  #     - --mode 
+  #     - tunnel 
+  #     - --region 
+  #     - us-west
+  #   restart: always
+  #   depends_on:
+  #     - app
+  #   environment: 
+  #     - RELAY_KEY=${RELAY_KEY}
+  #     - RELAY_SECRET=${RELAY_SECRET}
+  #     - TUNNELS=${TUNNELS} 
