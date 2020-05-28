@@ -11,8 +11,8 @@ steps:
   
 ---
 kind: pipeline
-type: docker
-name: frontend
+type: exec
+name: build
 
 platform:
   os: linux
