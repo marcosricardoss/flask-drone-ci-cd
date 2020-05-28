@@ -27,8 +27,8 @@ steps:
     branch:
     - master
 
-depends_on:
-- test
+# depends_on:
+# - test
 
 ---
 kind: pipeline
@@ -58,6 +58,6 @@ steps:
       
       <{{ build.link }}|Visit build page ↗>  
 
-depends_on:
-- test    
-- build
+# depends_on:
+# - test    
+# - build
