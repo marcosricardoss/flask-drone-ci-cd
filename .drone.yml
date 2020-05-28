@@ -9,6 +9,55 @@ steps:
   - pip install -r requirements.txt
   - pytest 
 
+---
+kind: pipeline
+type: exec
+name: deploy
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: run
+  commands:    
+  - docker-compose down --remove-orphans
+  - docker-compose up -d --build
+  when:
+    branch:
+    - master
+
+depends_on:
+- test
+
+---
+kind: pipeline
+name: after
+type: docker
+
+steps:
+  - name: notify slack
+  image: plugins/slack
+  settings:
+    webhook: 
+      from_secret: slack_webhook_url
+    username: drone
+    channel: dev
+    template: >
+      {{#if build.pull }}
+        *{{#success build.status}}✔{{ else }}✘{{/success}} {{ uppercasefirst build.status }}*: <https://github.com/{{ repo.owner }}/{{ repo.name }}/pull/{{ build.pull }}|Pull Request #{{ build.pull }}>
+      {{else}}
+        *{{#success build.status}}✔{{ else }}✘{{/success}} {{ uppercasefirst build.status }}: Build #{{ build.number }}* (type: `{{ build.event }}`)
+      {{/if}}
+
+      Commit: <https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}|{{ truncate build.commit 8 }}>
+
+      Branch: <https://github.com/{{ repo.owner }}/{{ repo.name }}/commits/{{ build.branch }}|{{ build.branch }}>
+
+      Author: {{ build.author }}
+      
+      <{{ build.link }}|Visit build page ↗>  
+
 # https://discordapp.com/api/webhooks/<webhook_id>/<webhook_token>
 # - name: notify discord 
 #   image: appleboy/drone-discord
@@ -27,47 +76,8 @@ steps:
 #       build page: {{ build.link }}
 #   when:
 #     branch:
-#     - master
-
-# - name: notify slack
-#   image: plugins/slack
-#   settings:
-#     webhook: 
-#       from_secret: slack_webhook_url
-#     username: drone
-#     channel: dev
-#     template: >
-#       {{#if build.pull }}
-#         *{{#success build.status}}✔{{ else }}✘{{/success}} {{ uppercasefirst build.status }}*: <https://github.com/{{ repo.owner }}/{{ repo.name }}/pull/{{ build.pull }}|Pull Request #{{ build.pull }}>
-#       {{else}}
-#         *{{#success build.status}}✔{{ else }}✘{{/success}} {{ uppercasefirst build.status }}: Build #{{ build.number }}* (type: `{{ build.event }}`)
-#       {{/if}}
-
-#       Commit: <https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}|{{ truncate build.commit 8 }}>
-
-#       Branch: <https://github.com/{{ repo.owner }}/{{ repo.name }}/commits/{{ build.branch }}|{{ build.branch }}>
-
-#       Author: {{ build.author }}
-      
-#       <{{ build.link }}|Visit build page ↗>  
-
----
-kind: pipeline
-type: exec
-name: deploy
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: greeting
-  commands:    
-  - docker-compose down --remove-orphans
-  - docker-compose up -d --build
-  when:
-    branch:
-    - master
+#     - master      
 
 depends_on:
-- test
+- test    
+- build
