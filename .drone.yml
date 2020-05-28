@@ -23,7 +23,7 @@ steps:
   commands:   
   - pwd
   - docker-compose down --remove-orphans
-  - docker-compose up --build
+  - docker-compose up -d --build
   when:
     branch:
     - master
