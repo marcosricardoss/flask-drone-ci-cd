@@ -7,5 +7,3 @@ if ! [ -d "$DIR" ]; then
 fi  
 
 cp -R * $DIR
-echo "no error"
-exit 0
