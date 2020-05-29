@@ -25,6 +25,8 @@ steps:
   - docker stop flaskapp
   - docker rm flaskapp
   - docker-compose up -d --build
+  - mkdir mrss
+  - mkdir mrss
   when:
     branch:
     - master
@@ -65,4 +67,4 @@ steps:
 
 depends_on:
 - test    
-- deploy
+# - deploy
