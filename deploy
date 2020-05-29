@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
 mkdir testsss
+mkdir testsss
 mkdir /tmp/testsss
