@@ -25,7 +25,6 @@ steps:
   - docker stop flaskapp
   - docker rm flaskapp
   - docker-compose up -d --build
-  - bash notify
   when:
     branch:
     - master
