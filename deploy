@@ -6,4 +6,4 @@ if ! [ -d "$DIR" ]; then
   mkdir $DIR    
 fi  
 
-touch /tmp/flask-app-deploy/marcos.txt
+cd DIR
