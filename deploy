@@ -7,4 +7,5 @@ if ! [ -d "$DIR" ]; then
 fi  
 
 cp -R * $DIR
+echo "error"
 exit 1
