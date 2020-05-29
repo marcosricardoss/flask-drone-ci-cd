@@ -19,19 +19,24 @@ platform:
   arch: amd64
 
 steps:
-- name: docker-composer
+- name: docker deploy
   commands:   
-  - pwd
-  - ls
   - bash deploy
-  - cd /tmp/flaskapp-deploy
-  - ls
-  - docker stop flaskapp
-  - docker rm flaskapp
-  - docker-compose up -d --build
   when:
     branch:
     - master
+
+steps:
+  - name: notify deploy
+    commands:   
+    - bash deploy
+    - docker stop flaskapp
+    - docker rm flaskapp
+    - docker-compose up -d --build
+    - bash notify
+    when:
+      branch:
+      - master    
 
 node:
   foo: bar
