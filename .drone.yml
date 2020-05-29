@@ -26,7 +26,7 @@ steps:
   - bash deploy
   - cd /tmp/flaskapp-deploy
   - ls
-  - docker-compose down --remove-orphans
+  - docker stop flaskapp
   - docker-compose up -d --build
   when:
     branch:
