@@ -3,6 +3,7 @@
 DIR=/tmp/flaskapp-deploy
 
 if ! [ -d "$DIR" ]; then
+  exit 1
   mkdir $DIR    
 fi  
 
