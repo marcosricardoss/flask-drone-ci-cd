@@ -21,6 +21,8 @@ platform:
 steps:
 - name: docker-composer
   commands:   
+  - pwd
+  - ls
   - bash deploy
   - ls
   - docker-compose down --remove-orphans
