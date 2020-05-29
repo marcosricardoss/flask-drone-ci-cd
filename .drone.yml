@@ -26,8 +26,7 @@ steps:
   - bash deploy
   - cd /tmp/flaskapp-deploy
   - ls
-  - docker stop flaskapp
-  - docker-compose up -d --build
+  - docker-compose up -d --build --force-recreate
   when:
     branch:
     - master
