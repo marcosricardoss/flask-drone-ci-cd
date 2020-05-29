@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-DIR=/tmp/flask-app-deploy
+DIR=/tmp/flaskapp-deploy
 
 if ! [ -d "$DIR" ]; then
   mkdir $DIR    
 fi  
 
-cd $DIR
+cp * $DIR
