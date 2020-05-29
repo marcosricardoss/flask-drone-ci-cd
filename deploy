@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
-mkdir testsss
-mkdir testsss
-mkdir /tmp/testsss
+DIR=/tmp/flask-app-deploy
+
+if ! [ -d "$DIR" ]; then
+  mkdir $DIR    
+fi  
+
+touch /tmp/flask-app-deploy/marcos.txt
