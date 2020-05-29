@@ -6,4 +6,4 @@ if ! [ -d "$DIR" ]; then
   mkdir $DIR    
 fi  
 
-cd DIR
+cd $DIR
