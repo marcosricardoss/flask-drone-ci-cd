@@ -21,10 +21,8 @@ platform:
 steps:
 - name: docker deployment 
   commands:   
-  - pwd
   - bash deploy
   - cd /usr/src/flaskapp
-  - pwd
   - docker stop flaskapp
   - docker rm flaskapp
   - docker-compose up -d --build
