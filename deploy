@@ -7,4 +7,3 @@ if ! [ -d "$DIR" ]; then
 fi  
 
 cp -R * $DIR
-cd $DIR
