@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
-DIR=/tmp/flaskapp-deploy
+DIR=/usr/src/flaskapp
 
 if ! [ -d "$DIR" ]; then
   mkdir $DIR    
 fi  
 
 cp -R * $DIR
+cd $DIR

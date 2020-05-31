@@ -6,6 +6,7 @@ services:
       context: .
     environment:
         FLASK_APP: app        
+    restart: always
     command: waitress-serve --port=4000 --call 'app:create_app'
     volumes:
       - './:/usr/src/app'
