@@ -23,7 +23,7 @@ steps:
   commands:   
   - pwd
   - bash deploy
-  - cd /usr/src/app
+  - cd /usr/src/flaskapp
   - pwd
   - docker stop flaskapp
   - docker rm flaskapp
